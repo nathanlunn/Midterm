@@ -52,32 +52,6 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-app.get("/login", (req, res) => {
-  res.send("This is login")
-})
-
-app.get("/register", (req, res) => {
-  res.send("This is register")
-})
-
-app.get("/new", (req, res) => {
-  res.send("This is to create items for sale")
-})
-
-app.post("/login", (req, res) => {
-  
-})
-
-app.post("/register", (req, res) => {
-  
-})
-
-app.post("/new", (req, res) => {
-  
-})
-
-
-
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
