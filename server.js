@@ -10,7 +10,7 @@ const morgan = require("morgan");
 
 // PG database client/connection setup
 const { Pool } = require("pg");
-const dbParams = require("./lib/db.js");
+const dbParams = require("./lib/db.j s");
 const db = new Pool(dbParams);
 db.connect();
 
@@ -51,6 +51,10 @@ app.use("/api/widgets", widgetsRoutes(db));
 app.get("/", (req, res) => {
   res.render("index");
 });
+
+app.get("/login", (req, res) => {
+  res.send("This is login")
+})
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
