@@ -12,11 +12,13 @@ module.exports = (db) => {
     
     db.query(`SELECT items.*, users.name, users.email, users.phone FROM items JOIN users ON owner_id = users.id WHERE items.id = $1;`, [item_id])
       .then(data => {
+        console.log(data);
         const itemAndOwner = data.rows[0];
         const templateVars = { itemAndOwner };
         // *** can be implemented when cookie and  implemented ***
         if (user_id === itemAndOwner.owner_id) {
-          return res.get('/owned_items');
+          console.log('test');
+          return res.redirect('/owned_items');
         }
         return res.render('single_item', templateVars);
       })
