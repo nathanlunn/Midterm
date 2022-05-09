@@ -32,6 +32,9 @@
         </div>
         <div class="message_contact">
           <h5> From: <%= message.sender_name %></h5>
+          <form action="/messages/<%= message.item_id %>/message.sender_id" method="GET">
+            <button type="submit">Reply</button>
+          </form>
         </div>
 
       </article>

@@ -11,6 +11,7 @@ DROP TABLE IF EXISTS items CASCADE;
 DROP TABLE IF EXISTS messages CASCADE;
 DROP TABLE IF EXISTS favourite_items CASCADE;
 
+
 CREATE TABLE users (
   id SERIAL PRIMARY KEY NOT NULL,
   name VARCHAR(255) NOT NULL,
@@ -45,3 +46,6 @@ CREATE TABLE messages (
   content TEXT NOT NULL,
   time_sent TIMESTAMP NOT NULL DEFAULT current_timestamp
 );
+
+-- temporary fix for permissions error
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO labber;
