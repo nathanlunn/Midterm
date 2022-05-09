@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/single_item.css" type="text/css" />
+  <script src="https://kit.fontawesome.com/bb3368cb9e.js" crossorigin="anonymous"></script>
+
+  <title><%= itemAndOwner.title %></title>
+</head>
+<body>
+  <!-- replace with nav bar -->
+  <div class="nav">nav bar</div>
+
+  <h1>Selected Item</h1>
+  <article class="single_item_page">
+
+    <div class="item_display">
+
+      <div class="item_image">
+        <img src="<%= itemAndOwner.photo_url %>" alt="">
+      </div>
+
+      <div class="item_info">
+        <form action="/favourites/<%= itemAndOwner.id %>" method="POST">
+          <label for="favourite"> click to favourite:</label>
+          <button name="favourite" type="submit"><i class="fa-solid fa-heart"></i></button>
+        </form>
+        <h3><%= itemAndOwner.title %></h3>
+        <h3> Price: $<%= itemAndOwner.price/100 %></h3>
+        <br>
+        <h3>About:</h3>
+        <p><%= itemAndOwner.description %></p>
+        <h5>being sold by: <%= itemAndOwner.name %></h5>
+      </div>
+
+    </div>
+
+    <div class="message_form">
+      <h2>Contact <%= itemAndOwner.name %> about <%= itemAndOwner.title %>:</h2>
+      <div class="contact">
+        <% if (itemAndOwner.phone) { %>
+         <h4>By phone: <%= itemAndOwner.phone %></h4>
+        <% } %>
+        <h4>By email: <%= itemAndOwner.email %> </h4>
+        <form action="/messages/<%= itemAndOwner.id %>/<%= itemAndOwner.owner_id %>" method="POST">
+          <h4>or message <%= itemAndOwner.name %> directly:</h4>
+          <textarea name="content" placeholder="Hey! is this still available?" class="message_box" type="submit"></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+
+  </article>
+</body>
+</html>

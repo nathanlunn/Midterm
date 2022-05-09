@@ -1,0 +1,73 @@
+
+.single_item_page {
+  display: flex;
+}
+.item_display {
+  display: flex;
+}
+
+.item_image img {
+  height: 500px;
+  width: 500px;
+  object-fit: fill;
+}
+
+.item_info {
+  box-sizing: border-box;
+  height: 500px;
+  width: 500px;
+  padding: 80px 100px;
+}
+
+.item_info h5 {
+  margin-top: 80px;
+  margin-left: 250px;
+}
+
+.message_form {
+  background-color: red;
+  height: 500px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 20px;
+  justify-content: space-around;
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.contact h4 {
+  margin: 5px;
+}
+
+.contact form{
+  margin-top: 20px;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  height: 100px; 
+  width: 100%;
+}
+.contact form textarea {
+  width: 90%;
+  height: 100px;
+  border-radius: 4px 4px 4px 0px;
+  resize: none;
+}
+.contact form button {
+  width: 150px;
+  border-radius: 4px 4px 4px 0px;
+  resize: none;
+}
+
+// will be deleted when nav bar made
+.nav {
+  background-color: rgb(155, 253, 235);
+  height: 80px;
+  width: 100%;
+}
