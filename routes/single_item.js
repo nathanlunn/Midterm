@@ -5,7 +5,7 @@ module.exports = (db) => {
   router.get("/:item_id", (req, res) => {
 
     // REMOVE WHEN LOGIN IMPLEMENTED
-    req.session.user_id = 1;
+    req.session.user_id =  1;
 
     const item_id = req.params.item_id;
     const user_id = req.session.user_id;
@@ -15,9 +15,9 @@ module.exports = (db) => {
         const itemAndOwner = data.rows[0];
         const templateVars = { itemAndOwner };
         // *** can be implemented when cookie and  implemented ***
-        // if (user_id === itemAndOwner.owner_id) {
-        //   return res.get('/owned_items');
-        // }
+        if (user_id === itemAndOwner.owner_id) {
+          return res.get('/owned_items');
+        }
         return res.render('single_item', templateVars);
       })
       .catch(err => {
