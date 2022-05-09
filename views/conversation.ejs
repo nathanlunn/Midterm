@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 
+  <link rel="stylesheet" href="/styles/conversation.css" type="text/css" />
+
   <!-- for adding jquery commands -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -14,6 +16,36 @@
 
 </head>
 <body>
+  <h1>Conversation between you and <%= other_user %> about <%= messages[0].item_title %> <h1>
+  <div class="messages_container">
+    <% for (let message of messages) { %>
+      <article class="message_box">
+        <div class="keep_left">
+
+          <img src="<%= message.item_image %>" alt="">
   
+          <div class="message_contact">
+  
+            <% if (message.sender_id === user_id) { %>
+              <h5>From: You</h5>
+            <% } else { %>
+              <h5> From: <%= message.sender_name %></h5>
+            <% } %>
+            Sent: <%= message.time_sent.toDateString() %>
+  
+          </div>
+
+          <div class="message_content">
+            <h3>Regarding: <%= message.item_title %></h3>
+            <div class="message">
+              <p> <%= message.content %> </p>
+            </div>
+          </div>
+        </div>
+        <!-- <form action="/messages/<%= messages.item_id %>"></form> -->
+
+      </article>
+    <% } %>
+  </div>
 </body>
 </html>
