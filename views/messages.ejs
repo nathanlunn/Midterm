@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Messages for <%= messages[0].receiver_name %></title>
+
+    <link rel="stylesheet" href="/styles/messages.css" type="text/css" />
+    <!-- for adding jquery commands -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- for adding jquery event listeners (***see tweeter***) -->
+    <script type="text/javascript" src="/scripts/messages_client.js"></script>
+
+</head>
+<body>
+  <h1>Your Messages:</h1>
+  <div class="messages_container">
+    <% for (let message of messages) { %>
+      <article class="message_box">
+        <div class="keep_left">
+
+          <img src="<%= message.item_image %>" alt="">
+  
+          <div class="message_content">
+            <h3>Regarding: <%= message.item_title %></h3>
+            <div class="message">
+              <p> <%= message.content %> </p>
+            </div>
+          </div>
+        </div>
+        <div class="message_contact">
+          <h5> From: <%= message.sender_name %></h5>
+        </div>
+
+      </article>
+    <% } %>
+  </div>
+</body>
+</html>

@@ -2,15 +2,24 @@ const express = require('express');
 const router  = express.Router();
 
 module.exports = (db) => {
-  router.get('/', (req, res) => {
+  router.get("/", (req, res) => {
 
     // REMOVE WHEN LOGIN IMPLEMENTED
-    req.session.user_id = 1;
+    req.session.user_id = 3;
 
     const user_id = req.session.user_id;
-    db.query(`SELECT * FROM messages WHERE receiver_id = $1`, [user_id])
-      .then(messages => {
-        res.json(messages.rows);
+    console.log(user_id);
+    db.query(`SELECT messages.*, receiver.name AS receiver_name, sender.name AS sender_name, items.title AS item_title, items.photo_url AS item_image
+    FROM messages 
+    JOIN users receiver ON receiver_id = receiver.id 
+    JOIN users sender ON sender_id = sender.id
+    JOIN items ON item_id = items.id
+    WHERE receiver_id = $1
+    GROUP BY messages.id, receiver.id, sender.id, items.id;`, [user_id])
+      .then(data => {
+        const messages = data.rows;
+        const templateVars = {messages, user_id};
+        res.render('messages', templateVars);
       })
       .catch(err => {
         res
@@ -19,7 +28,7 @@ module.exports = (db) => {
       });
   });
 
-  router.post("/messages/:item_id/:owner_id", (req, res) => {
+  router.post("/:item_id/:owner_id", (req, res) => {
 
     // REMOVE WHEN LOGIN IMPLEMENTED
     req.session.user_id = 1;
