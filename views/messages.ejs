@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/styles/messages.css" type="text/css" />
     <!-- for adding jquery commands -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
 
     <!-- for adding jquery event listeners (***see tweeter***) -->
     <script type="text/javascript" src="/scripts/messages_client.js"></script>
@@ -40,6 +41,7 @@
               <button type="submit">Reply</button>
             </form>
           <% } %>
+          Sent: <%= message.time_sent.toDateString() %>
 
         </div>
 
