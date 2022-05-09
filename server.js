@@ -1,6 +1,6 @@
 // load .env data into process.env
 require("dotenv").config();
-
+ 
 // Web server config
 const PORT = process.env.PORT || 8080;
 const sassMiddleware = require("./lib/sass-middleware");
@@ -12,7 +12,7 @@ const morgan = require("morgan");
 const { Pool } = require("pg");
 const dbParams = require("./lib/db.js");
 const db = new Pool(dbParams);
-db.connect();
+db.connect(); 
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: true}));
 const cookieSession = require('cookie-session');
@@ -56,7 +56,14 @@ const widgetsRoutes = require("./routes/widgets");
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 // app.use('/', single_itemRoutes(db));
-// Note: mount other resources here, using the same pattern above
+// Note: mount other resources here, using the same pattern above 
+
+const login = require("./routes/login-router")
+app.use("/login", login(db));
+const newItems = require("./routes/new_items")
+app.use("/new", newItems(db));  
+
+
 
 // Home page
 // Warning: avoid creating more routes in this file!
