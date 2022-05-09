@@ -1,0 +1,22 @@
+
+const express = require('express');
+const router  = express.Router();
+
+module.exports = (db) => {
+  router.get("/", (req, res) => {
+    const queryString = `
+    SELECT * FROM items
+    `;
+    db.query(queryString)
+      .then(data => {
+        const items = data.rows;
+        res.json({ items });
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+  return router;
+};
