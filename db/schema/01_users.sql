@@ -1,4 +1,4 @@
--- Drop and recreate Users table (Example)
+  -- Drop and recreate Users table (Example)
 
 -- DROP TABLE IF EXISTS users CASCADE;
 -- CREATE TABLE users (
@@ -49,3 +49,4 @@ CREATE TABLE messages (
 
 -- temporary fix for permissions error
 GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO labber;
+GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO labber;

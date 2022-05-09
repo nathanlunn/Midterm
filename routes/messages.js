@@ -14,8 +14,9 @@ module.exports = (db) => {
     JOIN users receiver ON receiver_id = receiver.id 
     JOIN users sender ON sender_id = sender.id
     JOIN items ON item_id = items.id
-    WHERE receiver_id = $1
-    GROUP BY messages.id, receiver.id, sender.id, items.id;`, [user_id])
+    WHERE receiver_id = $1 OR sender_id = $1
+    GROUP BY messages.id, receiver.id, sender.id, items.id
+    ORDER BY messages.time_sent;`, [user_id])
       .then(data => {
         const messages = data.rows;
         const templateVars = {messages, user_id};
@@ -35,7 +36,7 @@ module.exports = (db) => {
 
     const sender_id = req.session.user_id;
     const receiver_id = req.params.owner_id;
-    const item_id = req.params.owner_id;
+    const item_id = req.params.item_id;
     const content = req.body.content;
     db.query(`INSERT INTO messages (sender_id, receiver_id, item_id, content) VALUES ($1, $2, $3, $4)`, [sender_id, receiver_id, item_id, content ])
       .then(() => {
