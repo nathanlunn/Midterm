@@ -13,7 +13,16 @@
 <body>
   <section class="login-form">
     <h1>homepage logo</h1>
-    <form action="/login" method = "POST" >
+    <% if (error) { %>
+      <div class="error-container">
+        <div class="row text-center" style="background-color:rgb(236, 183, 192)">
+          <div class="col-12">
+            <h4 class="error-message"><%= error %></h4>
+          </div>
+        </div>
+      </div>
+    <% } %>
+    <form action="/login" method = "POST">
       <div class="int-area">
         <input type="text" name ="email" id="id" autocomplete="off" required>
         <label>E-mail </label>
@@ -23,7 +32,7 @@
         <label>Password </label>
       </div> 
       <div class="btn-area">
-        <button>Sign in</button>
+        <button type="submit" >Sign in</button>
       </div>
     </form>
     <div class="caption">

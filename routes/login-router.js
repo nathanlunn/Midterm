@@ -1,10 +1,7 @@
 'user strict'
 const express = require('express');
 const router  = express.Router();
-const existingUser = function (emaialIn,passwrodIn){
-
-
-}
+const getUserWithEmailAndPassword = require('../lib/helpers.js')
 
 module.exports = (db) => {   
   router.get("/", (req, res) => {
@@ -12,7 +9,7 @@ module.exports = (db) => {
       .then(data => {
         //const users = data.rows;
         //res.json({ users });
-        res.render("login")
+        res.render("login",{error:''})
       })
       .catch(err => {
         res
@@ -22,13 +19,19 @@ module.exports = (db) => {
   });
 
   router.post("/",(req,res)=>{
-    const emaialIn = req.body.email;
-    const passwrodIn = req.body.pw;
+    const emailIn = req.body.email;
+    const passwordIn = req.body.pw;
+    //console.log(req.body)
     //compare input wit db, and if existing redirect to "/", if not error
-    db.query(``)
-    
-    
-
+    getUserWithEmailAndPassword(emailIn,passwordIn,db)
+    .then ((user)=>{
+      console.log(user)
+      if (user?.email === emailIn && user?.password === passwordIn) {
+        res.redirect("/")
+      } else {
+        res.render('login',{error:'User Not Found'})
+      }
+    })
   })
   return router;
 };
