@@ -9,7 +9,7 @@ module.exports = (db) => {
   router.post("/new",(req,res)=>{
     console.log(req.body)
     const {title, description, price, photo} = req.body
-    db.query(`INSERT INTO items (title, description, price, photo_url) VALUES ($1,$2,$3,$4)`,[title, description, price, photo])
+    db.query(`INSERT INTO items (title, description, price, photo_url) VALUES ($1,$2,$3,$4)`,[title, description, price * 100, photo])
     .then(()=>{
       res.redirect("/listings")
     })
