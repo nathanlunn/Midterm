@@ -52,6 +52,7 @@ module.exports = (db) => {
   router.get("/:item_id/:receiver_id/:sender_id", (req, res) => {
     // REMOVE WHEN LOGIN IMPLEMENTED
     req.session.user_id = 3;
+    
     const user_id = req.session.user_id;
     const item_id = req.params.item_id;
     const receiver_id = req.params.receiver_id;
