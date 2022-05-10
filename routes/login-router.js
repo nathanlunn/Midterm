@@ -24,7 +24,10 @@ module.exports = (db) => {
     .then ((user)=>{
       console.log(user)
       if (user?.email === emailIn && user?.password === passwordIn) {
-        res.redirect("/")
+        console.log(req.session)
+        req.session.user_id = user.id;
+        console.log('user_id --->',req.session.user_id)
+        res.redirect("/");
       } else {
         res.render('login',{error:'User Not Found'})
       }

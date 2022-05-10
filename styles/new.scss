@@ -33,7 +33,7 @@ body {
   width: 100%;
   padding: 20px 10px 10px;
   background-color: transparent;
-  border: none;
+  border: none; 
   border-bottom: 1px solid black;
   font-size: 18px;
   color:black;
@@ -78,4 +78,7 @@ h4{
   display: flex;
   justify-content: center;
   
+}
+.invalid-input {
+  border-bottom: 1px solid red ;
 }
