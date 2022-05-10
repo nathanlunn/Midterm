@@ -1,13 +1,16 @@
 const express = require('express');
 const router  = express.Router();
 
-router.get("/new", (req, res) => {
-  res.send("This is to create items for sale")
-})
-
-
-
-
-router.post("/new", (req, res) => {
-  
-})
+module.exports = (db) => {   
+  router.get("/", (req, res) => {
+    db.query(`SELECT * FROM users;`)
+      .then(data => {
+        res.render("login",{error:''})
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  })
+};

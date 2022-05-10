@@ -45,6 +45,8 @@ app.use("/api/widgets", widgetsRoutes(db));
 // Note: mount other resources here, using the same pattern above
 const login = require('./routes/login-router')
 app.use('/login',login(db))
+const newItems = require('./routes/new_items')
+//app.use('/new_items',newItems(db))
 
 // Home page
 // Warning: avoid creating more routes in this file!
