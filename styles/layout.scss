@@ -4,3 +4,11 @@ body,
 html {
   margin: 0;
 }
+.item-container {
+  display: flex;
+  flex-direction:column ;
+}
+.item-title {
+  display: flex;
+  flex-direction: row;
+}
