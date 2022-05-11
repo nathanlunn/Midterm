@@ -4,9 +4,6 @@ const router  = express.Router();
 module.exports = (db) => {
   router.get("/:item_id", (req, res) => {
 
-    // REMOVE WHEN LOGIN IMPLEMENTED
-    req.session.user_id = 3;
-
     const item_id = req.params.item_id;
     const user_id = req.session.user_id;
     
@@ -14,7 +11,7 @@ module.exports = (db) => {
       .then(data => {
         console.log(data);
         const itemAndOwner = data.rows[0];
-        const templateVars = { itemAndOwner };
+        const templateVars = { itemAndOwner, sent:false };
         // *** can be implemented when cookie and  implemented ***
         if (user_id === itemAndOwner.owner_id) {
           console.log('test');
@@ -28,15 +25,6 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
-
-  router.post('/', (req, res) => {
-
-    db.query(``, [])
-      .then()
-      .catch()
-  })
-
-
   return router;
 };
 

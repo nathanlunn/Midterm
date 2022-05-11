@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible " content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href ="/styles/login.css"> 
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ 
+</head>
+
+<body>
+  <section class="login-form">
+    <h1>homepage logo</h1>
+    <% if (error) { %>
+      <div class="error-container">
+        <div class="row text-center" style="background-color:rgb(236, 183, 192)">
+          <div class="col-12">
+            <h4 class="error-message"><%= error %></h4>
+          </div>
+        </div>
+      </div>
+    <% } %>
+    <form action="/login" method = "POST">
+      <div class="int-area">
+        <input type="text" name ="email" id="id" autocomplete="off" required>
+        <label>E-mail </label>
+      </div>
+      <div class="int-area">
+        <input type="password" name ="pw" id="pw " autocomplete="off" required>
+        <label>Password </label>
+      </div> 
+      <div class="btn-area">
+        <button type="submit" >Sign in</button>
+      </div>
+    </form>
+    <div class="caption">
+      Don't have an account? Register <a href="">here</a>
+    </div>
+
+  </section>
+  
+</body>
+</html>

@@ -12,14 +12,18 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
   <!-- for adding jquery event listeners (***see tweeter***) -->
-  <script type="text/javascript" src="/scripts/client.js"></script>
+  <!-- <script type="text/javascript" src="/scripts/conversation-client.js"></script> -->
 
 </head>
 <body>
-  <h1>Conversation between you and <%= other_user %> about <%= messages[0].item_title %> <h1>
+  <h1>Conversation between you and <%= other_user %> about <%= conversation[0].item_title %> <h1>
   <div class="messages_container">
-    <% for (let message of messages) { %>
-      <article class="message_box">
+    <% for (let message of conversation) { %>
+      <% if (message.sender_id === user_id) { %>
+        <article class="message_box user_message">
+      <% } else { %>
+        <article class="message_box" >
+      <% } %>
         <div class="keep_left">
 
           <img src="<%= message.item_image %>" alt="">
@@ -42,10 +46,15 @@
             </div>
           </div>
         </div>
-        <!-- <form action="/messages/<%= messages.item_id %>"></form> -->
-
+        
       </article>
-    <% } %>
+      <% } %>
+
+      <form class="message_form" action="/messages/<%= conversation[0].item_id %>/<%= other_user_id %>" method="POST">
+        <textarea name="content" class="response_content" type="submit"></textarea>
+        <button type="submit" class="send_message">Send Message</button>
+      </form>
+
   </div>
 </body>
 </html>

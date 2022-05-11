@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Messages for <%= messages[0].receiver_name %></title>
+  <title>Messages</title>
 
     <link rel="stylesheet" href="/styles/messages.css" type="text/css" />
     <!-- for adding jquery commands -->
@@ -17,6 +17,7 @@
 </head>
 <body>
   <h1>Your Conversations:</h1>
+  <% if (messages.length > 0) { %>
   <div class="messages_container">
     <% for (let message of messages) { %>
       <article class="message_box">
@@ -25,29 +26,25 @@
           <img src="<%= message.item_image %>" alt="">
           
           <div class="message_contact">
-  
-            <% if (message.sender_id === user_id) { %>
-              <h5>From: You</h5>
-            <% } else { %>
-              <h5> From: <%= message.sender_name %></h5>
-              <form action="/messages/<%= message.item_id %>/<%= message.sender_id %>" method="GET">
-                <button type="submit">Reply</button>
-              </form>
-            <% } %>
-            Sent: <%= message.time_sent.toDateString() %>
+            <h5> In talks with: <%= message.other_user %></h5>
+            <form action="/messages/<%= message.item_id %>/<%= message.receiver_id %>/<%= message.sender_id %>" method="GET">
+              <button type="submit">Open conversation</button>
+            </form>
+            last message sent: <%= message.time_sent.toDateString() %>
   
           </div>
   
           <div class="message_content">
             <h3>Regarding: <%= message.item_title %></h3>
-            <div class="message">
-              <p> <%= message.content %> </p>
-            </div>
           </div>
         </div>
 
       </article>
+      <% } %>
+    </div>
+    <% } else { %>
+      <h4>You have no messages</h4>
     <% } %>
-  </div>
+    
 </body>
 </html>
