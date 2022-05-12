@@ -1,5 +1,5 @@
 body {
-  background-image: url('https://www.creativefabrica.com/wp-content/uploads/2020/02/12/Abstract-Webpage-Background-Graphics-1-2.jpg');
+  background-image: url('https://i.ibb.co/hfhbSzH/login-img.jpg');
   // background-color: bisque;
 }
 
@@ -25,6 +25,13 @@ h1 {
   background-color: rgba(255, 255, 255, 0.768);
   border: 4px solid rgba(0, 0, 0, 0.783);
 }
+
+.message_box:hover {
+  cursor: pointer;
+  box-shadow: 5px 5px;
+  color: rgba(35, 30, 30, 0.448);
+}
+
 .message_box h1 {
   margin-left: 10px;
   margin-top: 8px;
@@ -69,19 +76,26 @@ h1 {
   margin-right: 4px;
 }
 
-.open_conversation button {
+.sale {
   height: 100%;
   width: 100%;
   border: 3px solid rgb(45, 43, 43);
-  border-radius: 5px 0px 0px 5px;
+  border-radius: 2px;
   color: rgb(50, 44, 44);
-  background-color: rgb(236, 213, 228);
+  background-color: rgb(133, 143, 188);
   font-size: 24px;
 }
 
-.open_conversation button:hover {
+.sale:hover {
   cursor: pointer;
-  background-color: rgb(236, 193, 232);
+}
+
+.open_conversation button.green {
+  background-color: rgba(154, 210, 124, 0.94);
+}
+
+.open_conversation button.yellow {
+  background-color: rgb(188, 188, 87);
 }
 
 .picture {

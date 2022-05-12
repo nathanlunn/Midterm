@@ -6,7 +6,7 @@ module.exports = (db) => {
   router.get("/", (req, res) => {
 
     const user_id = req.session.user_id;
-    db.query(`SELECT messages.item_id, MAX(time_sent) AS time_sent, items.title AS item_title, items.photo_url AS item_image, receiver.name AS receiver_name, receiver.id AS receiver_id, sender.name AS sender_name, sender.id AS sender_id
+    db.query(`SELECT messages.item_id, MAX(time_sent) AS time_sent, items.title AS item_title, items.photo_url AS item_image, items.is_sold AS is_sold, receiver.name AS receiver_name, receiver.id AS receiver_id, sender.name AS sender_name, sender.id AS sender_id
     FROM messages 
     JOIN users sender ON sender_id = sender.id
     JOIN users receiver ON receiver_id = receiver.id

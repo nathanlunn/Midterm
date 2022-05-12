@@ -1,3 +1,7 @@
+body {
+  background-image: url('https://i.ibb.co/hfhbSzH/login-img.jpg');
+  background-size: cover;
+}
 
 .single_item_page {
   margin-top: 20px;
@@ -29,7 +33,10 @@
 }
 
 .item_info {
-  align-self: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  align-self: flex-start;
   width: 30%;
 }
 
@@ -49,8 +56,9 @@
 }
 
 .message_form {
-  background-color: lightblue;
+  background-color: rgba(173, 216, 230, 0.756);
   border: 1px solid rgb(90, 59, 59);
+  color: rgb(33, 25, 25);
   height: 420px;
   width: 40%;
   display: flex;
@@ -99,11 +107,11 @@
 
 .favourite_button {
   border: none;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0);
   color: grey;
   font-size: 3em;
   margin-bottom: 40px;
-  margin-left: 70%;
+  align-self: flex-end;
 }
 
 .favourite_button:hover {
