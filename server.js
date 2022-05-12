@@ -12,7 +12,7 @@ const morgan = require("morgan");
 const { Pool } = require("pg");
 const dbParams = require("./lib/db.js");
 const db = new Pool(dbParams);
-db.connect(); 
+db.connect();
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: true}));
 const cookieSession = require('cookie-session');
@@ -23,7 +23,6 @@ app.use(cookieSession({
   // Cookie Options
   maxAge: 24 * 60 * 60 * 1000 // 24 hours
 }));
-
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
@@ -49,22 +48,18 @@ app.use(express.static("public"));
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
-const single_itemRoutes = require('./routes/single_item');
-const messagesRoutes = require('./routes/messages')
+const listingsRoutes = require('./routes/listings');
+const login = require('./routes/login-router');
+const filter = require('./routes/filter')
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
+// Note: mount other resources here, using the same pattern above
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
-// app.use('/', single_itemRoutes(db));
-// Note: mount other resources here, using the same pattern above 
-
-const login = require("./routes/login-router")
-app.use("/login", login(db));
-const newItems = require("./routes/new_items")
-app.use("/new", newItems(db));  
-
-
+app.use('/login',login(db));
+app.use('/listings',listingsRoutes(db));
+app.use('/filter',filter(db));
 
 // Home page
 // Warning: avoid creating more routes in this file!
@@ -74,6 +69,6 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-app.listen(8080, () => {
+app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });

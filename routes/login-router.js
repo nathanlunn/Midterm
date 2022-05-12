@@ -7,8 +7,6 @@ module.exports = (db) => {
   router.get("/", (req, res) => {
     db.query(`SELECT * FROM users;`)
       .then(data => {
-        //const users = data.rows;
-        //res.json({ users });
         res.render("login",{error:''})
       })
       .catch(err => {
@@ -21,13 +19,15 @@ module.exports = (db) => {
   router.post("/",(req,res)=>{
     const emailIn = req.body.email;
     const passwordIn = req.body.pw;
-    //console.log(req.body)
     //compare input wit db, and if existing redirect to "/", if not error
     getUserWithEmailAndPassword(emailIn,passwordIn,db)
     .then ((user)=>{
       console.log(user)
       if (user?.email === emailIn && user?.password === passwordIn) {
-        res.redirect("/")
+        console.log(req.session)
+        req.session.user_id = user.id;
+        console.log('user_id --->',req.session.user_id)
+        res.redirect("/");
       } else {
         res.render('login',{error:'User Not Found'})
       }
