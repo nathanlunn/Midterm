@@ -49,7 +49,8 @@ app.use(express.static("public"));
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
-// const single_itemRoutes = require('./routes/single_item');
+const single_itemRoutes = require('./routes/single_item');
+const messagesRoutes = require('./routes/messages')
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
