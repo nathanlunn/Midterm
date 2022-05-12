@@ -1,7 +1,7 @@
 'user strict'
 const express = require('express');
 const router  = express.Router();
-const getUserWithEmailAndPassword = require('../lib/helpers.js')
+const { getUserWithEmailAndPassword } = require('../lib/helpers.js')
 
 module.exports = (db) => {   
   router.get("/", (req, res) => {
