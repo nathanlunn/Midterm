@@ -108,6 +108,9 @@ body {
 .send_message {
   width: 20%;
   padding: 10px;
+  font-size: 20px;
+  font-weight: 600;
+  color: rgb(60, 30, 30);
   background-color: rgb(236, 207, 189);
   border: none;
   border-top: 2px solid rgb(0, 0, 0);
@@ -117,12 +120,7 @@ body {
 }
 .send_message:hover {
   background-color: rgb(232, 192, 124);
-  font-size: 15px;
   cursor: pointer;
-}
-
-.send_message:active {
-  font-size: 10px;
 }
 
 .green {

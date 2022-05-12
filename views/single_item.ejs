@@ -18,16 +18,28 @@
   <!-- replace with nav bar -->
   <div class="nav">nav bar</div>
 
-  <h1>Selected Item</h1>
   <article class="single_item_page">
 
-    <div class="item_display">
+    <div class="item_description">
+      <div class="item_wrap">
+        <img src="<%= itemAndOwner.photo_url %>" alt="">
+        <div class="item_info">
+          <h3>Title: <%= itemAndOwner.title %></h3>
+          <h3>Price: $<%= itemAndOwner.price/100 %></h3>
+          <h3>About:</h3>
+          <p><%= itemAndOwner.description %></p>
+          <h5>being sold by: <%= itemAndOwner.name %></h5>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="item_display">
 
       <div class="item_image">
         <img src="<%= itemAndOwner.photo_url %>" alt="">
-      </div>
+      </div> -->
 
-      <div class="item_info">
+      <!-- <div class="item_info">
         <form action="/favourites" method="GET" class="favourite">
           <label for="favourite"> click to favourite:</label>
           <textarea name="item_id" id="" cols="30" rows="10" style="display: none;"><%= itemAndOwner.id %></textarea>
@@ -39,9 +51,9 @@
         <h3>About:</h3>
         <p><%= itemAndOwner.description %></p>
         <h5>being sold by: <%= itemAndOwner.name %></h5>
-      </div>
+      </div> -->
 
-    </div>
+    <!-- </div> -->
 
     <div class="message_form">
       <% if (sent) { %>

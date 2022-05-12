@@ -18,13 +18,14 @@
 <body>
   <div class="conversation_description">
     <div class="item_info">
-    <img src="<%= conversation[0].item_image %>" alt="">
+      <img src="<%= conversation[0].item_image %>" alt="">
       <h3>Talking to: <%= other_user %></h3> 
       <h3>About: <%= conversation[0].item_title %> </h3>
       <h3>Owned By: <%= owner_name %> </h3>
       <h3>Price: $<%= conversation[0].price/100 %> </h3>
     </div>
   </div>
+
   <div class="messages_container">
     <div class="message_list">
       <% for (let message of conversation) { %>
