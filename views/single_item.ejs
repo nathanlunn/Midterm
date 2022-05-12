@@ -9,6 +9,9 @@
   <link rel="stylesheet" href="/styles/single_item.css" type="text/css" />
   <script src="https://kit.fontawesome.com/bb3368cb9e.js" crossorigin="anonymous"></script>
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="text/javascript" src="../scripts/single_item-client.js"></script>
+
   <title><%= itemAndOwner.title %></title>
 </head>
 <body>
@@ -25,9 +28,10 @@
       </div>
 
       <div class="item_info">
-        <form action="/favourites/<%= itemAndOwner.id %>" method="POST">
+        <form action="/favourites" method="GET" class="favourite">
           <label for="favourite"> click to favourite:</label>
-          <button name="favourite" type="submit" class="favourite_button"><i class="fa-solid fa-heart"></i></button>
+          <textarea name="item_id" id="" cols="30" rows="10" style="display: none;"><%= itemAndOwner.id %></textarea>
+          <button type="submit" class="favourite_button"><i class="fa-solid fa-heart"></i></button>
         </form>
         <h3><%= itemAndOwner.title %></h3>
         <h3> Price: $<%= itemAndOwner.price/100 %></h3>
@@ -42,6 +46,9 @@
     <div class="message_form">
       <% if (sent) { %>
         <h3>message sent</h3>
+        <form action="/messages" method="GET">
+          <button type="submit" class="messages_redirect">View Your Messages</button>
+        </form>
       <% } else { %>
       <h2>Contact <%= itemAndOwner.name %> about <%= itemAndOwner.title %>:</h2>
       <div class="contact">

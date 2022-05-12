@@ -73,7 +73,7 @@ module.exports = (db) => {
     const receiver_id = req.params.receiver_id;
     const sender_id = req.params.sender_id;
 
-    db.query(`SELECT messages.*, items.photo_url AS item_image, items.owner_id AS owner_id, items.title AS item_title, receiver.name AS receiver_name, sender.name AS sender_name
+    db.query(`SELECT messages.*, items.photo_url AS item_image, items.price AS price, items.owner_id AS owner_id, items.title AS item_title, receiver.name AS receiver_name, sender.name AS sender_name
     FROM messages
     JOIN users receiver ON receiver_id = receiver.id 
     JOIN users sender ON sender_id = sender.id
@@ -81,7 +81,7 @@ module.exports = (db) => {
     WHERE messages.item_id = $1 
     AND (messages.receiver_id = $2 OR messages.sender_id = $2)
     AND (messages.receiver_id = $3 OR messages.sender_id = $3)
-    ORDER BY messages.time_sent`, [item_id, receiver_id, sender_id])
+    ORDER BY messages.time_sent desc`, [item_id, receiver_id, sender_id])
       .then(data => {
         const conversation = data.rows;
 
@@ -99,15 +99,23 @@ module.exports = (db) => {
         usersArray.push(user2);
         let other_user;
         let other_user_id;
+        let owner_name;
         for (let user of usersArray) {
           if (user.id !== user_id) {
             other_user = user.name;
             other_user_id = user.id;
           }
         }
+        for (let user of usersArray) {
+          if (user.id === conversation[0].owner_id && user_id === user.id) {
+            owner_name = 'You';
+          } else if (user.id === conversation[0].owner_id && user_id !== user.id) {
+            owner_name = user.name;
+          }
+        }
 
 
-        const templateVars = {conversation, user_id, other_user, other_user_id};
+        const templateVars = {conversation, user_id, other_user, other_user_id, owner_name};
         res.render('conversation', templateVars);
       })
       .catch(err => {

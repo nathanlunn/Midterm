@@ -80,9 +80,19 @@
 }
 
 .favourite_button:hover {
-  color: rgb(245, 143, 143)
+  color: rgb(245, 143, 143);
+  cursor: pointer;
+}
+
+.favourite_button:active {
+  color: red;
+  font-size: 25px;
 }
 
 #hide {
   display: none;
+}
+
+.red {
+  color: red;
 }

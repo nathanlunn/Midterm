@@ -16,39 +16,42 @@
 
 </head>
 <body>
-  <h1>Conversation between you and <%= other_user %> about <%= conversation[0].item_title %> <h1>
+  <div class="conversation_description">
+    <div class="item_info">
+    <img src="<%= conversation[0].item_image %>" alt="">
+      <h3>Talking to: <%= other_user %></h3> 
+      <h3>About: <%= conversation[0].item_title %> </h3>
+      <h3>Owned By: <%= owner_name %> </h3>
+      <h3>Price: $<%= conversation[0].price/100 %> </h3>
+    </div>
+  </div>
   <div class="messages_container">
-    <% for (let message of conversation) { %>
-      <% if (message.sender_id === user_id) { %>
-        <article class="message_box user_message">
-      <% } else { %>
-        <article class="message_box" >
-      <% } %>
-        <div class="keep_left">
-
-          <img src="<%= message.item_image %>" alt="">
-  
-          <div class="message_contact">
-  
-            <% if (message.sender_id === user_id) { %>
-              <h5>From: You</h5>
-            <% } else { %>
-              <h5> From: <%= message.sender_name %></h5>
-            <% } %>
-            Sent: <%= message.time_sent.toDateString() %>
-  
-          </div>
-
-          <div class="message_content">
-            <h3>Regarding: <%= message.item_title %></h3>
-            <div class="message">
-              <p> <%= message.content %> </p>
+    <div class="message_list">
+      <% for (let message of conversation) { %>
+        <% if (message.sender_id === user_id) { %>
+          <article class="message_box user_message">
+        <% } else { %>
+          <article class="message_box other_message" >
+        <% } %>
+                
+            <div class="message_contact">
+              <% if (message.sender_id === user_id) { %>
+                <h5>From: You</h5>
+              <% } else { %>
+                <h5> From: <%= message.sender_name %></h5>
+              <% } %>
             </div>
-          </div>
-        </div>
-        
-      </article>
+            
+            <div class="message_content">
+              <div class="message">
+                <p> <%= message.content %> </p>
+              </div>
+            </div>
+
+          </article>
       <% } %>
+    </div>
+
 
       <form class="message_form" action="/messages/<%= conversation[0].item_id %>/<%= other_user_id %>" method="POST">
         <textarea name="content" class="response_content" type="submit"></textarea>

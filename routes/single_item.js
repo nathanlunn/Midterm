@@ -9,7 +9,6 @@ module.exports = (db) => {
     
     db.query(`SELECT items.*, users.name, users.email, users.phone FROM items JOIN users ON owner_id = users.id WHERE items.id = $1;`, [item_id])
       .then(data => {
-        console.log(data);
         const itemAndOwner = data.rows[0];
         const templateVars = { itemAndOwner, sent:false };
         // *** can be implemented when cookie and  implemented ***
@@ -24,6 +23,10 @@ module.exports = (db) => {
           .status(500)
           .json({ error: err.message });
       });
+  });
+
+  router.get('/favourite', (req, res) => {
+    res.send(req.body);
   });
   return router;
 };
