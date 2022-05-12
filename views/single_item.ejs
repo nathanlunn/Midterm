@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/single_item.css" type="text/css" />
+  <script src="https://kit.fontawesome.com/bb3368cb9e.js" crossorigin="anonymous"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="text/javascript" src="../scripts/single_item-client.js"></script>
+
+  <title><%= itemAndOwner.title %></title>
+</head>
+<body>
+  <!-- replace with nav bar -->
+  <div class="nav">nav bar</div>
+
+  <article class="single_item_page">
+
+    <div class="item_description">
+      <div class="item_wrap">
+        <img src="<%= itemAndOwner.photo_url %>" alt="">
+        <div class="item_info">
+          <form action="/favourites" method="GET" class="favourite">
+            <label for="favourite"></label>
+            <textarea name="item_id" id="" cols="30" rows="10" style="display: none;"><%= itemAndOwner.id %></textarea>
+            <% if (favourite) { %>
+              <button type="submit" class="favourite_button red"><i class="fa-solid fa-heart"></i></button>
+              <% } else { %>
+              <button type="submit" class="favourite_button"><i class="fa-solid fa-heart"></i></button>
+            <% } %>
+          </form>
+          <h3>Title: <%= itemAndOwner.title %></h3>
+          <h3>Price: $<%= itemAndOwner.price/100 %></h3>
+          <h3>About:</h3>
+          <p><%= itemAndOwner.description %></p>
+          <h5>being sold by: <%= itemAndOwner.name %></h5>
+        </div>
+      </div>
+    </div>
+
+    
+    <!-- <div class="item_display">
+
+      <div class="item_image">
+        <img src="<%= itemAndOwner.photo_url %>" alt="">
+      </div> -->
+
+      <!-- <div class="item_info">
+        <form action="/favourites" method="GET" class="favourite">
+          <label for="favourite"> click to favourite:</label>
+          <textarea name="item_id" id="" cols="30" rows="10" style="display: none;"><%= itemAndOwner.id %></textarea>
+          <button type="submit" class="favourite_button"><i class="fa-solid fa-heart"></i></button>
+        </form>
+        <h3><%= itemAndOwner.title %></h3>
+        <h3> Price: $<%= itemAndOwner.price/100 %></h3>
+        <br>
+        <h3>About:</h3>
+        <p><%= itemAndOwner.description %></p>
+        <h5>being sold by: <%= itemAndOwner.name %></h5>
+      </div> -->
+
+    <!-- </div> -->
+    <div class="message_sent hide">
+      <h3>message sent</h3>
+      <form action="/messages" method="GET">
+        <button type="submit" class="messages_redirect">View Your Messages</button>
+      </form>
+    </div>
+
+    <div class="message_form">
+      <h2>Contact <%= itemAndOwner.name %> about <%= itemAndOwner.title %>:</h2>
+      <div class="contact">
+        <% if (itemAndOwner.phone) { %>
+          <h4>By phone: <%= itemAndOwner.phone %></h4>
+        <% } %>
+        <h4>By email: <%= itemAndOwner.email %> </h4>
+        <form class="send_ajax">
+          <h4>or message <%= itemAndOwner.name %> directly:</h4>
+          <textarea name="content" placeholder="Hey! is this still available?" class="message_box" type="submit"></textarea>
+          <textarea name="item_id" class="hide"><%= itemAndOwner.id %></textarea>
+          <textarea name="owner_id" class="hide"><%= itemAndOwner.owner_id %></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+
+  </article>
+</body>
+</html>

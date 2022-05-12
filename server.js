@@ -51,6 +51,9 @@ const widgetsRoutes = require("./routes/widgets");
 const listingsRoutes = require('./routes/listings');
 const login = require('./routes/login-router');
 const filter = require('./routes/filter')
+const single_itemRoutes = require('./routes/single_item');
+const messagesRoutes = require('./routes/messages');
+const favouritesRoutes = require('./routes/favourites');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -60,6 +63,10 @@ app.use("/api/widgets", widgetsRoutes(db));
 app.use('/login',login(db));
 app.use('/listings',listingsRoutes(db));
 app.use('/filter',filter(db));
+app.use("/messages", messagesRoutes(db));
+app.use('/favourites', favouritesRoutes(db));
+app.use("/single", single_itemRoutes(db));
+// Note: mount other resources here, using the same pattern above
 
 // Home page
 // Warning: avoid creating more routes in this file!
@@ -67,7 +74,7 @@ app.use('/filter',filter(db));
 
 app.get("/", (req, res) => {
   res.render("index");
-});
+}); 
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <link rel="stylesheet" href="/styles/conversation.css" type="text/css" />
+
+  <!-- for adding jquery commands -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <!-- for adding jquery event listeners (***see tweeter***) -->
+  <!-- <script type="text/javascript" src="/scripts/conversation-client.js"></script> -->
+
+</head>
+<body>
+  <div class="conversation_description">
+    <div class="item_info">
+      <img src="<%= conversation[0].item_image %>" alt="">
+      <h3>Talking to: <%= other_user %></h3> 
+      <h3>About: <%= conversation[0].item_title %> </h3>
+      <h3>Owned By: <%= owner_name %> </h3>
+      <h3>Price: $<%= conversation[0].price/100 %> </h3>
+    </div>
+  </div>
+
+  <div class="messages_container">
+    <div class="message_list">
+      <% for (let message of conversation) { %>
+        <% if (message.sender_id === user_id) { %>
+          <article class="message_box user_message">
+        <% } else { %>
+          <article class="message_box other_message" >
+        <% } %>
+                
+            <div class="message_contact">
+              <% if (message.sender_id === user_id) { %>
+                <h5>From: You</h5>
+              <% } else { %>
+                <h5> From: <%= message.sender_name %></h5>
+              <% } %>
+            </div>
+            
+            <div class="message_content">
+              <div class="message">
+                <p> <%= message.content %> </p>
+              </div>
+            </div>
+
+          </article>
+      <% } %>
+    </div>
+
+
+      <form class="message_form" action="/messages/<%= conversation[0].item_id %>/<%= other_user_id %>" method="POST">
+        <textarea name="content" class="response_content" type="submit"></textarea>
+        <button type="submit" class="send_message">Send Message</button>
+      </form>
+
+  </div>
+</body>
+</html>

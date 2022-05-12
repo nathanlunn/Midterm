@@ -1,0 +1,136 @@
+body {
+  background-image: url('https://i.ibb.co/hfhbSzH/login-img.jpg');
+  background-size: cover;
+}
+
+.single_item_page {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.item_description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  height: 420px;
+}
+.item_description img {
+  width: 420px;
+  height: 420px;
+  border-radius: 3px 1px 0px 3px;
+}
+
+.item_wrap {
+  display: flex;
+  width: 90%;
+  height: 100%;
+  border: 2px solid rgba(0, 0, 0, 0.714);
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.814);
+}
+
+.item_info {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  align-self: flex-start;
+  width: 30%;
+}
+
+.item_info h3 {
+  margin: 23px 10px 5px;
+  color: rgb(49, 45, 45);
+}
+.item_info p {
+  margin-left: 15px;
+  margin-top: 0;
+  color: rgb(49, 45, 45);
+}
+.item_info h5 {
+  margin: 5px;
+  color: rgb(49, 45, 45);
+  text-align: right;
+}
+
+.message_form {
+  background-color: rgba(173, 216, 230, 0.756);
+  border: 1px solid rgb(90, 59, 59);
+  color: rgb(33, 25, 25);
+  height: 420px;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 20px;
+  justify-content: space-around;
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.contact h4 {
+  margin: 5px;
+}
+
+.contact form{
+  margin-top: 20px;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  height: 100px; 
+  width: 100%;
+}
+.message_box {
+  width: 90%;
+  height: 100px;
+  border-radius: 4px 4px 4px 0px;
+  resize: none;
+}
+.contact form button {
+  width: 150px;
+  border-radius: 4px 4px 4px 0px;
+  resize: none;
+}
+
+// will be deleted when nav bar made
+.nav {
+  background-color: rgb(155, 253, 235);
+  height: 80px;
+  width: 100%;
+}
+
+.favourite_button {
+  border: none;
+  background-color: rgba(255, 255, 255, 0);
+  color: grey;
+  font-size: 3em;
+  margin-bottom: 40px;
+  align-self: flex-end;
+}
+
+.favourite_button:hover {
+  color: rgb(233, 168, 168);
+  cursor: pointer;
+}
+
+.favourite_button:active {
+  color: red;
+}
+
+.hide {
+  display: none;
+}
+
+.red {
+  color: red;
+}
+
+.red:hover {
+  color: rgb(220, 111, 111);
+}
