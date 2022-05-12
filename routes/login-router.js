@@ -22,10 +22,7 @@ module.exports = (db) => {
     //compare input wit db, and if existing redirect to "/", if not error
     getUserWithEmailAndPassword(emailIn,passwordIn,db)
     .then ((user)=>{
-<<<<<<< HEAD
       console.log(user)
-=======
->>>>>>> feature/messages
       if (user?.email === emailIn && user?.password === passwordIn) {
         console.log(req.session)
         req.session.user_id = user.id;
@@ -37,7 +34,6 @@ module.exports = (db) => {
     })
   })
   return router;
-<<<<<<< HEAD
 };
 
 
@@ -47,6 +43,3 @@ module.exports = (db) => {
 
 
 
-=======
-};
->>>>>>> feature/messages
