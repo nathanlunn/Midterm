@@ -1,5 +1,5 @@
 <% for (let item of items) { %>
-  <a href="/" style="text-decoration: none; color: black">
+  <a href="/<%=item.id%>" style="text-decoration: none; color: black">
     <div class="row featurette">
       <div class="col-5">
         <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src="<%=item.photo_url %>"/>
@@ -9,9 +9,11 @@
   <div class="col-7">
     <h2 class="item-heading d-flex justify-content-between"> <span> <%= item.title %></span> <span><%= '$'+item.price/100 %></span></h2>
     <p class="lead"><%= item.description.substr(0, 80)+'...' %></p>
+
   </div>
 
 </div>
+    <p class="date-posted d-flex justify-content-end"><strong>Date Posted:</strong> <%= item.posted_time %></p>
 </a>
 <hr class="featurette-divider">
 <% } %>

@@ -49,6 +49,7 @@ const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
 const itemsRoutes = require("./routes/items")
 const favouriteItemsRoutes = require ("./routes/favourites")
+const yourPostedItemsRoutes = require("./routes/your_postings")
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -56,6 +57,7 @@ app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 app.use("/", itemsRoutes(db));
 app.use("/my_favourites", favouriteItemsRoutes(db));
+app.use("/my_postings", yourPostedItemsRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 // Home page

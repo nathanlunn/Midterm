@@ -5,15 +5,20 @@ const router  = express.Router();
 const getItems = function (db,isFeatured) {
   //test implementation with res.cookie
     // req.session.user_id = 3;
+    let stringModifier = ``;
+
+    if (isFeatured) {
+      stringModifier = `AND is_featured = true`
+
+    }
     let queryString = `
-    SELECT title, description, price, photo_url, is_sold, posted_time, users.name as posted_by
+    SELECT title, description, price, photo_url, is_sold, posted_time, users.name as posted_by, items.id as id
     FROM items
     JOIN users ON users.id = owner_id
-    WHERE is_deleted = false
+    WHERE is_deleted = false ${stringModifier}
+    ORDER BY posted_time DESC
     `;
-    if (isFeatured) {
-      queryString += ` AND is_featured = true`
-    }
+
     return db.query(queryString)
       .then(data => {
         // console.log(data);

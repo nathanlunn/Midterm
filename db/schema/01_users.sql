@@ -28,7 +28,7 @@ CREATE TABLE items (
   photo_url VARCHAR(255) NOT NULL,
   is_sold BOOLEAN NOT NULL DEFAULT FALSE,
   posted_time TIMESTAMP NOT NULL DEFAULT current_timestamp,
-  is_deleted BOOLEAN NOT NULL DEFAULT FALSE,
+  is_deleted BOOLEAN NOT NULL DEFAULT FALSE
   is_featured BOOLEAN NOT NULL DEFAULT FALSE
 );
 
