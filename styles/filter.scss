@@ -55,6 +55,7 @@ body {
 }
 .btn-area  {
   margin-top:30px;
+  
 }
 .btn-area button {
   width: 100%;
@@ -64,7 +65,7 @@ body {
   border-radius: 25px;
   background: black;
   color: white ;
-  cursor:pointer;
+  cursor: pointer;
 }
 .caption {
    margin-top: 20px ;
@@ -78,5 +79,27 @@ body {
 h4{
   display: flex;
   justify-content: center;
-  
 }
+.popup-bg {
+  display: none;
+  z-index:3;
+  position:absolute;
+  background: rgba(0,0,0,0.6);
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%; 
+}
+.popup{
+  position: absolute;
+    top: 17%;
+    left: 14%;
+    z-index: 4;
+    background: #e0e0e0;
+    width: 75%;
+    height: 70%;
+    
+}
+.filtered-item {
+  cursor: pointer;
+ }

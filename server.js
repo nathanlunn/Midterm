@@ -48,6 +48,7 @@ const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
 const listingsRoutes = require('./routes/listings');
 const login = require('./routes/login-router');
+const filter = require('./routes/filter')
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -56,6 +57,7 @@ app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 app.use('/login',login(db));
 app.use('/listings',listingsRoutes(db));
+app.use('/filter',filter(db));
 
 // Home page
 // Warning: avoid creating more routes in this file!
