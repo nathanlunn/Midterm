@@ -127,27 +127,32 @@ module.exports = (db) => {
 
   router.post("/:item_id/:other_user_id", (req, res) => {
 
-
     const sender_id = req.session.user_id;
     const receiver_id = req.params.other_user_id;
     const item_id = req.params.item_id;
     const content = req.body.content;
-    let fromSinglePage = false;
-    if (req.body.single_item) {
-      fromSinglePage = true;
-    }
+
     db.query(`INSERT INTO messages (sender_id, receiver_id, item_id, content) VALUES ($1, $2, $3, $4)`, [sender_id, receiver_id, item_id, content ])
       .then(() => {
-        if (fromSinglePage) {
-          db.query(`SELECT items.*, users.name, users.email, users.phone FROM items JOIN users ON owner_id = users.id WHERE items.id = $1;`, [item_id])
-            .then(data => {
-              const itemAndOwner = data.rows[0];
-              const templateVars = { itemAndOwner, sent: true };
-              return res.render('single_item', templateVars);
-            })
-          return;
-        }
         res.redirect(`/messages/${item_id}/${receiver_id}/${sender_id}`);
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+    });
+  
+  router.post("/add", (req, res) => {
+
+    const sender_id = req.session.user_id;
+    const receiver_id = req.body.owner_id;
+    const item_id = req.body.item_id;
+    const content = req.body.content;
+
+    db.query(`INSERT INTO messages (sender_id, receiver_id, item_id, content) VALUES ($1, $2, $3, $4)`, [sender_id, receiver_id, item_id, content ])
+      .then(() => {
+        console.log(data);
       })
       .catch(err => {
         res

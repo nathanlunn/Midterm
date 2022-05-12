@@ -7,10 +7,18 @@ module.exports = (db) => {
     const item_id = req.params.item_id;
     const user_id = req.session.user_id;
     
-    db.query(`SELECT items.*, users.name, users.email, users.phone FROM items JOIN users ON owner_id = users.id WHERE items.id = $1;`, [item_id])
+    db.query(`SELECT items.*, users.name, users.email, users.phone, favourite_items.user_id AS fav_user FROM items JOIN users ON owner_id = users.id JOIN favourite_items ON item_id = items.id WHERE items.id = $1;`, [item_id])
       .then(data => {
         const itemAndOwner = data.rows[0];
-        const templateVars = { itemAndOwner, sent:false };
+        
+        let favourite = false;
+        for (let object of data.rows) {
+          if (object.fav_user === user_id) {
+            favourite = true;
+          }
+        }
+
+        const templateVars = { itemAndOwner, sent:false, favourite };
         // *** can be implemented when cookie and  implemented ***
         if (user_id === itemAndOwner.owner_id) {
           console.log('test');

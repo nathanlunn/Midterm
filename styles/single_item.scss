@@ -1,7 +1,9 @@
 
 .single_item_page {
+  margin-top: 20px;
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
 
 .item_description {
@@ -10,12 +12,11 @@
   align-items: center;
   width: 50%;
   height: 420px;
-  margin-top: 40px;
 }
 .item_description img {
   width: 420px;
   height: 420px;
-  border-radius: 10px 1px 0px 10px;
+  border-radius: 3px 1px 0px 3px;
 }
 
 .item_wrap {
@@ -23,7 +24,7 @@
   width: 90%;
   height: 100%;
   border: 2px solid rgba(0, 0, 0, 0.714);
-  border-radius: 15px;
+  border-radius: 5px;
   background-color: rgba(255, 255, 255, 0.814);
 }
 
@@ -49,8 +50,9 @@
 
 .message_form {
   background-color: lightblue;
-  height: 500px;
-  width: 500px;
+  border: 1px solid rgb(90, 59, 59);
+  height: 420px;
+  width: 40%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -99,23 +101,28 @@
   border: none;
   background-color: white;
   color: grey;
-  font-size: 1.5em;
+  font-size: 3em;
+  margin-bottom: 40px;
+  margin-left: 70%;
 }
 
 .favourite_button:hover {
-  color: rgb(245, 143, 143);
+  color: rgb(233, 168, 168);
   cursor: pointer;
 }
 
 .favourite_button:active {
   color: red;
-  font-size: 25px;
 }
 
-#hide {
+.hide {
   display: none;
 }
 
 .red {
   color: red;
+}
+
+.red:hover {
+  color: rgb(220, 111, 111);
 }

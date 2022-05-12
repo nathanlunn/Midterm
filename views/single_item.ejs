@@ -24,6 +24,15 @@
       <div class="item_wrap">
         <img src="<%= itemAndOwner.photo_url %>" alt="">
         <div class="item_info">
+          <form action="/favourites" method="GET" class="favourite">
+            <label for="favourite"></label>
+            <textarea name="item_id" id="" cols="30" rows="10" style="display: none;"><%= itemAndOwner.id %></textarea>
+            <% if (favourite) { %>
+              <button type="submit" class="favourite_button red"><i class="fa-solid fa-heart"></i></button>
+              <% } else { %>
+              <button type="submit" class="favourite_button"><i class="fa-solid fa-heart"></i></button>
+            <% } %>
+          </form>
           <h3>Title: <%= itemAndOwner.title %></h3>
           <h3>Price: $<%= itemAndOwner.price/100 %></h3>
           <h3>About:</h3>
@@ -33,6 +42,7 @@
       </div>
     </div>
 
+    
     <!-- <div class="item_display">
 
       <div class="item_image">
@@ -54,28 +64,28 @@
       </div> -->
 
     <!-- </div> -->
+    <div class="message_sent hide">
+      <h3>message sent</h3>
+      <form action="/messages" method="GET">
+        <button type="submit" class="messages_redirect">View Your Messages</button>
+      </form>
+    </div>
 
     <div class="message_form">
-      <% if (sent) { %>
-        <h3>message sent</h3>
-        <form action="/messages" method="GET">
-          <button type="submit" class="messages_redirect">View Your Messages</button>
-        </form>
-      <% } else { %>
       <h2>Contact <%= itemAndOwner.name %> about <%= itemAndOwner.title %>:</h2>
       <div class="contact">
         <% if (itemAndOwner.phone) { %>
          <h4>By phone: <%= itemAndOwner.phone %></h4>
         <% } %>
         <h4>By email: <%= itemAndOwner.email %> </h4>
-        <form action="/messages/<%= itemAndOwner.id %>/<%= itemAndOwner.owner_id %>" method="POST">
+        <form class="send_ajax">
           <h4>or message <%= itemAndOwner.name %> directly:</h4>
           <textarea name="content" placeholder="Hey! is this still available?" class="message_box" type="submit"></textarea>
-          <textarea name="single_item" id="hide">true</textarea>
+          <textarea name="item_id" class="hide"><%= itemAndOwner.id %></textarea>
+          <textarea name="owner_id" class="hide"><%= itemAndOwner.owner_id %></textarea>
           <button type="submit">Send Message</button>
         </form>
       </div>
-      <% } %>
     </div>
  
   </article>

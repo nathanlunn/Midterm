@@ -22,4 +22,17 @@ $(document).ready(function() {
     }
   });
   
+  $('.send_ajax').submit(function(event) {
+    event.preventDefault();
+
+    $.ajax({
+      method: 'POST',
+      url: 'messages/add',
+      data: $(this).serialize(),
+    })
+
+    $('.message_form').addClass('hide');
+    $('.message_sent').removeClass('hide');
+  });
+  
 });
