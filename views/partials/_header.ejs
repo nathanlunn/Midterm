@@ -3,27 +3,24 @@
     <a class="navbar-brand" href="/">BuySellSite.com</a>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <!-- <% for (const item of items) { %> -->
-          <% if (userObject.rows[0].length > 0) { %>
-          <!-- <a class="nav-item nav-link" href="/">Home</a>
-          <a class="nav-item nav-link" href="/filter">Filter</a>
-          <a class="nav-item nav-link" href="/create_posting">Create New Posting</a>
-          <a class="nav-item nav-link" href="/my_postings">My Postings</a>
-          <a class="nav-item nav-link" href="/my_favourites">My Favourites</a>
-          <a class="nav-item nav-link" href="/my_messages">My Messages</a>
-          <div class="logged-in">Logged in as: <%= items[0].posted_by %></div>
-          <form method="POST" action="/logout" >
-            <button type="submit" class="btn btn-outline-dark">Logout</button>
-            </form> -->
-            <p>abc</p>
-          <% } else { %>
-            <a class="nav-item nav-link" href="/login">Login here</a>
-            <a class="nav-item nav-link" href="/register">Register here</a>
-            <a class="nav-item nav-link" href="/filter">Filter</a>
-            <a class="nav-item nav-link" href="/">Home</a>
-          <% } %>
-        <!-- <% } %> -->
 
+        <% if (2 === 2) { %>
+        <a class="nav-item nav-link" href="/">Home</a>
+        <a class="nav-item nav-link" href="/filter">Filter</a>
+        <a class="nav-item nav-link" href="/create_posting">Create New Posting</a>
+        <a class="nav-item nav-link" href="/my_postings">My Postings</a>
+        <a class="nav-item nav-link" href="/my_favourites">My Favourites</a>
+        <a class="nav-item nav-link" href="/my_messages">My Messages</a>
+        <!-- <div class="logged-in">Logged in as: <%= items[0].posted_by %></div> -->
+        <form method="POST" action="/logout" >
+          <button type="submit" class="btn btn-outline-dark">Logout</button>
+          </form>
+        <% } else { %>
+          <a class="nav-item nav-link" href="/login">Login here</a>
+          <a class="nav-item nav-link" href="/register">Register here</a>
+          <a class="nav-item nav-link" href="/filter">Filter</a>
+          <a class="nav-item nav-link" href="/">Home</a>
+        <% } %>
       </div>
     </div>
   </nav>

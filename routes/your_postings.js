@@ -7,7 +7,7 @@ module.exports = (db) => {
   router.get('/', (req, res) => {
     const cookie = 1 || req.session.user_id;
     const queryString = `
-    SELECT title, description, price, photo_url, is_sold, posted_time, users.name as posted_by, items.id as id
+    SELECT title, description, price, photo_url, is_sold, posted_time, is_deleted, users.name as posted_by, items.id as id
     FROM items
     JOIN users ON users.id = owner_id
     WHERE owner_id = $1
@@ -26,7 +26,31 @@ module.exports = (db) => {
       });
   });
 
+  router.post('/:item_id', (req, res) => {
+    const itemID = req.params.item_id
+    const queryString2 = `
+    UPDATE items
+    SET is_sold = true
+    WHERE id = $1
+    `;
+    db.query(queryString2, [itemID])
+    .then(data => {
+      res.redirect('/my_postings')
+    });
+  });
 
+  router.post('/deleted/:item_id', (req, res) => {
+    const itemID = req.params.item_id
+    const queryString2 = `
+    UPDATE items
+    SET is_deleted = true
+    WHERE id = $1
+    `;
+    db.query(queryString2, [itemID])
+    .then(data => {
+      res.redirect('/my_postings')
+    });
+  });
   return router;
 };
 
