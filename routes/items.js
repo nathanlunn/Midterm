@@ -30,7 +30,9 @@ const getItems = function (db,isFeatured) {
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
-
+    if (!req.session.user_id) {
+      res.redirect('/login');
+    }
     //test implementation with res.cookie
     // req.session.user_id = 3;
     let promiseOne = getItems(db)
