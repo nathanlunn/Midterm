@@ -34,7 +34,7 @@ $(document).ready(function () {
       </div>
       <div class="container2">
           <div class="title">${itemsObject.title}</div>
-          <div class="price">$${itemsObject.price}</div>
+          <div class="price">$${itemsObject.price/100}</div>
         <div class="time">${timeago.format(itemsObject.posted_time)}</div>
       </div>
     </div>
