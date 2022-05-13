@@ -13,7 +13,7 @@
   </div>
 
 </div>
-    <p class="date-posted d-flex justify-content-end"><strong>Date Posted:</strong> <%= item.posted_time %></p>
+    <p class="date-posted d-flex justify-content-end"><strong>Date Posted:</strong> <%= item.posted_time.toUTCString(); %></p>
 </a>
 <hr class="featurette-divider">
 <% } %>

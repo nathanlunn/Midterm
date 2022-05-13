@@ -38,6 +38,7 @@ module.exports = (db) => {
     JOIN items ON items.id = item_id
     JOIN users ON users.id = owner_id
     WHERE user_id = $1
+    ORDER BY posted_time DESC
     `;
     db.query(queryString, [user_id])
       .then(data => {
