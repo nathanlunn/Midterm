@@ -1,5 +1,9 @@
 <% for (let item of items) { %>
-  <a href="/<%=item.id%>" style="text-decoration: none; color: black">
+  <% if (item.is_sold) { %>
+    <a href="/<%=item.id%>" class="sold" style="text-decoration: none; color: black">
+  <% } else { %>
+    <a href="/<%=item.id%>" style="text-decoration: none; color: black">
+  <%  } %>
     <div class="row featurette">
       <div class="col-5">
         <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src="<%=item.photo_url %>"/>

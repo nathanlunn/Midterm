@@ -122,6 +122,31 @@ body {
 .favourite_button:active {
   color: red;
 }
+.favourite_button:focus {
+  outline: 0;
+  box-shadow: none!important;
+
+}
+
+.message_sent {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.message_sent h1 {
+  margin-bottom: 50px;  
+}
+
+.message_sent button {
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 10px;
+}
+.message_sent button:hover {
+  background-color: rgba(150, 133, 133, 0.428);
+}
 
 .hide {
   display: none;
