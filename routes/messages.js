@@ -149,10 +149,13 @@ module.exports = (db) => {
     const receiver_id = req.body.owner_id;
     const item_id = req.body.item_id;
     const content = req.body.content;
+    console.log()
 
-    db.query(`INSERT INTO messages (sender_id, receiver_id, item_id, content) VALUES ($1, $2, $3, $4)`, [sender_id, receiver_id, item_id, content ])
-      .then(() => {
+    db.query(`INSERT INTO messages (sender_id, receiver_id, item_id, content) VALUES ($1, $2, $3, $4)`, 
+    [sender_id, receiver_id, item_id, content ])
+      .then(data => {
         console.log(data);
+        res.send('confirm');
       })
       .catch(err => {
         res

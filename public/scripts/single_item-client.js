@@ -27,7 +27,7 @@ $(document).ready(function() {
 
     $.ajax({
       method: 'POST',
-      url: 'messages/add',
+      url: '/messages/add',
       data: $(this).serialize(),
     })
 

@@ -21,8 +21,6 @@ module.exports = (db) => {
         db.query(`SELECT user_id FROM favourite_items WHERE item_id = $1;`, [item_id])
           .then(data => {
             favourites = data.rows;
-            
-            console.log(favourites)
             let favourite = false;
             for (let user of favourites) {
               if (user.user_id === user_id) {

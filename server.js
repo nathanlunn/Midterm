@@ -71,6 +71,10 @@ app.use("/single", single_itemRoutes(db));
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
+app.post('/logout', (req, res) => {
+  delete req.session.user_id;
+  res.redirect('/login');
+});
 
 app.get("/", (req, res) => {
   res.render("index");
