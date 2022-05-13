@@ -7,11 +7,12 @@ module.exports = (db) => {
     res.render("new");
   })
   router.post("/new",(req,res)=>{
+    const user_id = req.session.user_id;
     console.log(req.body)
     const {title, description, price, photo} = req.body
-    db.query(`INSERT INTO items (title, description, price, photo_url) VALUES ($1,$2,$3,$4)`,[title, description, price * 100, photo])
+    db.query(`INSERT INTO items (owner_id, title, description, price, photo_url) VALUES ($1,$2,$3,$4,$5)`,[user_id, title, description, price * 100, photo])
     .then(()=>{
-      res.redirect("/listings")
+      res.redirect("/my_postings");
     })
   })
   return router;
