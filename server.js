@@ -1,6 +1,6 @@
 // load .env data into process.env
 require("dotenv").config();
- 
+
 // Web server config
 const PORT = process.env.PORT || 8080;
 const sassMiddleware = require("./lib/sass-middleware");
@@ -54,6 +54,9 @@ const filter = require('./routes/filter')
 const single_itemRoutes = require('./routes/single_item');
 const messagesRoutes = require('./routes/messages');
 const favouritesRoutes = require('./routes/favourites');
+const itemsRoutes = require("./routes/items")
+// const favouriteItemsRoutes = require ("./routes/favourites")
+const yourPostedItemsRoutes = require("./routes/your_postings")
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -66,6 +69,9 @@ app.use('/filter',filter(db));
 app.use("/messages", messagesRoutes(db));
 app.use('/favourites', favouritesRoutes(db));
 app.use("/single", single_itemRoutes(db));
+app.use("/", itemsRoutes(db));
+// app.use("/my_favourites", favouriteItemsRoutes(db));
+app.use("/my_postings", yourPostedItemsRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -74,7 +80,7 @@ app.use("/single", single_itemRoutes(db));
 
 app.get("/", (req, res) => {
   res.render("index");
-}); 
+});
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
