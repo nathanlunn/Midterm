@@ -6,6 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 
+  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="/styles/conversation.css" type="text/css" />
 
   <!-- for adding jquery commands -->
@@ -16,49 +19,55 @@
 
 </head>
 <body>
-  <div class="conversation_description">
-    <div class="item_info">
-      <img src="<%= conversation[0].item_image %>" alt="">
-      <h3>Talking to: <%= other_user %></h3> 
-      <h3>About: <%= conversation[0].item_title %> </h3>
-      <h3>Owned By: <%= owner_name %> </h3>
-      <h3>Price: $<%= conversation[0].price/100 %> </h3>
-    </div>
-  </div>
 
-  <div class="messages_container">
-    <div class="message_list">
-      <% for (let message of conversation) { %>
-        <% if (message.sender_id === user_id) { %>
-          <article class="message_box user_message">
-        <% } else { %>
-          <article class="message_box other_message" >
-        <% } %>
-                
-            <div class="message_contact">
-              <% if (message.sender_id === user_id) { %>
-                <h5>From: You</h5>
-              <% } else { %>
-                <h5> From: <%= message.sender_name %></h5>
-              <% } %>
-            </div>
-            
-            <div class="message_content">
-              <div class="message">
-                <p> <%= message.content %> </p>
+  <nav class="header">  <%- include('partials/_header') %></nav>
+
+  <div class="body">
+
+    <div class="conversation_description">
+      <div class="item_info">
+        <img src="<%= conversation[0].item_image %>" alt="">
+        <h3>Talking to: <%= other_user %></h3> 
+        <h3>About: <%= conversation[0].item_title %> </h3>
+        <h3>Owned By: <%= owner_name %> </h3>
+        <h3>Price: $<%= conversation[0].price/100 %> </h3>
+      </div>
+    </div>
+
+    <div class="messages_container">
+      <div class="message_list">
+        <% for (let message of conversation) { %>
+          <% if (message.sender_id === user_id) { %>
+            <article class="message_box user_message">
+          <% } else { %>
+            <article class="message_box other_message" >
+          <% } %>
+                  
+              <div class="message_contact">
+                <% if (message.sender_id === user_id) { %>
+                  <h5>From: You</h5>
+                <% } else { %>
+                  <h5> From: <%= message.sender_name %></h5>
+                <% } %>
               </div>
-            </div>
+              
+              <div class="message_content">
+                <div class="message">
+                  <p> <%= message.content %> </p>
+                </div>
+              </div>
 
-          </article>
-      <% } %>
+            </article>
+        <% } %>
+      </div>
+
+
+        <form class="message_form" action="/messages/<%= conversation[0].item_id %>/<%= other_user_id %>" method="POST">
+          <textarea name="content" class="response_content" type="submit"></textarea>
+          <button type="submit" class="send_message">Send Message</button>
+        </form>
+
     </div>
-
-
-      <form class="message_form" action="/messages/<%= conversation[0].item_id %>/<%= other_user_id %>" method="POST">
-        <textarea name="content" class="response_content" type="submit"></textarea>
-        <button type="submit" class="send_message">Send Message</button>
-      </form>
-
   </div>
 </body>
 </html>

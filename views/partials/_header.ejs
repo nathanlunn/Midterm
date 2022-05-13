@@ -7,10 +7,10 @@
         <% if (2 === 2) { %>
         <a class="nav-item nav-link" href="/">Home</a>
         <a class="nav-item nav-link" href="/filter">Filter</a>
-        <a class="nav-item nav-link" href="/create_posting">Create New Posting</a>
+        <a class="nav-item nav-link" href="/listings/new">Create New Posting</a>
         <a class="nav-item nav-link" href="/my_postings">My Postings</a>
-        <a class="nav-item nav-link" href="/my_favourites">My Favourites</a>
-        <a class="nav-item nav-link" href="/my_messages">My Messages</a>
+        <a class="nav-item nav-link" href="/favourites">My Favourites</a>
+        <a class="nav-item nav-link" href="/messages">My Messages</a>
         <div>Logged in as: <%= "user.email" %></div>
         <form method="POST" action="/logout" >
           <button type="submit" class="btn btn-outline-dark">Logout</button>

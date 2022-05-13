@@ -51,7 +51,6 @@ const widgetsRoutes = require("./routes/widgets");
 const listingsRoutes = require('./routes/listings');
 const login = require('./routes/login-router');
 const filter = require('./routes/filter')
-const single_itemRoutes = require('./routes/single_item');
 const messagesRoutes = require('./routes/messages');
 const favouritesRoutes = require('./routes/favourites');
 const itemsRoutes = require("./routes/items")
@@ -68,10 +67,9 @@ app.use('/listings',listingsRoutes(db));
 app.use('/filter',filter(db));
 app.use("/messages", messagesRoutes(db));
 app.use('/favourites', favouritesRoutes(db));
-app.use("/single", single_itemRoutes(db));
+app.use("/my_postings", yourPostedItemsRoutes(db));
 app.use("/", itemsRoutes(db));
 // app.use("/my_favourites", favouriteItemsRoutes(db));
-app.use("/my_postings", yourPostedItemsRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -88,9 +86,4 @@ app.get("/", (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
-});
-
-app.post('/logout', (req, res) => {
-  delete req.session.user_id;
-  res.redirect('/login');
 });

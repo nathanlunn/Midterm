@@ -84,7 +84,7 @@ module.exports = (db) => {
             // *** can be implemented when cookie and  implemented ***
             if (user_id === itemAndOwner.owner_id) {
               console.log('test');
-              return res.redirect('/owned_items');
+              return res.redirect('/my_postings');
             }
             return res.render('single_item', templateVars);
             })

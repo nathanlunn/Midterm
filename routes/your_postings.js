@@ -23,7 +23,9 @@ const getItems = function (db, userIDCookie) {
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
+    console.log('testing');
     let userIDCookie = req.session.user_id;
+    console.log(userIDCookie);
 
     let promiseOne = getItems(db, userIDCookie)
     Promise.all([promiseOne])

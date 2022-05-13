@@ -1,15 +1,15 @@
 INSERT INTO users (name, email, password) 
-    VALUES ('Kirsten', 'kirsten@gmail.com', '1234');
+    VALUES ('Kristen', 'kristen@gmail.com', '1234');
 INSERT INTO users (name, email, password, phone) 
-    VALUES ('Khurram', 'Khurram@gmail.com', '1234', '9057897733');
+    VALUES ('Khurram', 'khurram@gmail.com', '1234', '9057897733');
 INSERT INTO users (name, email, password, phone) 
     VALUES ('Francis', 'francis@gmail.com', '1234', '9056559483');
 
 
 INSERT INTO items (owner_id, title, description, price, photo_url) 
-    VALUES (3, 'computer', 'A thought provoking piece, showcasing Vasilys ability to find inspiration in even the workplace, "computer" will no doubt be a showcase favorite for many years to come', 40000, 'https://i.ibb.co/gwGp9mM/Screen-Shot-2022-05-04-at-10-42-01-AM.png');
+    VALUES (3, 'computer', '"computer" will no doubt be a showcase favorite for many years to come', 40000, 'https://i.ibb.co/gwGp9mM/Screen-Shot-2022-05-04-at-10-42-01-AM.png');
 INSERT INTO items (owner_id, title, description, price, photo_url) 
-    VALUES (1, 'worker', 'Vasily demonstrates his admirable values with this piece, paying homage to women and men who work hard to build the physical infastructure of our communities', 24000, 'https://i.ibb.co/wyT2XpJ/Screen-Shot-2022-05-04-at-11-14-17-AM.png');
+    VALUES (1, 'worker', 'paying homage to women and men who work hard to build the physical infastructure of our communities', 24000, 'https://i.ibb.co/wyT2XpJ/Screen-Shot-2022-05-04-at-11-14-17-AM.png');
 INSERT INTO items (owner_id, title, description, price, photo_url) 
     VALUES (1, 'cursed', 'cursed', 900, 'https://i.ibb.co/tJmBCtR/Screen-Shot-2022-04-28-at-11-59-02-AM.png');
 INSERT INTO items (owner_id, title, description, price, photo_url, is_featured) 

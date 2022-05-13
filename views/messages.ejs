@@ -7,6 +7,11 @@
   <title>Messages</title>
 
     <link rel="stylesheet" href="/styles/messages.css" type="text/css" />
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- for adding jquery commands -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -15,6 +20,8 @@
 
 </head>
 <body>
+  <nav class="header">  <%- include('partials/_header') %></nav>
+
   <h1>Your Conversations:</h1>
   <% if (messages.length > 0) { %>
   <div class="messages_container">
