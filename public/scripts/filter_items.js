@@ -30,11 +30,10 @@ $(document).ready(function () {
     const itemsInContainer = $(
       `<div class="filtered-item" onclick="location.href='http://localhost:8080/${itemsObject.id}';">
       <div class="container1">
-        <img src="${itemsObject.photo_url}">
+        <img class="img" src="${itemsObject.photo_url}">
       </div>
       <div class="container2">
           <div class="title">${itemsObject.title}</div>
-          <div class="desc">${itemsObject.description}</div>
           <div class="price">$${itemsObject.price}</div>
         <div class="time">${timeago.format(itemsObject.posted_time)}</div>
       </div>
